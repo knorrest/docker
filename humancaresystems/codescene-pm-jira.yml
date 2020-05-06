@@ -1,0 +1,21 @@
+sync:
+  hour-interval: 1
+auth:
+  service:
+    username: someuser
+    password: somepwd
+  jira:
+    base-uri: https://somename.atlassian.net
+    username: jirauser
+    password: jiraapitoken
+projects:
+  - key: TEST1
+    cost-unit:
+      type: minutes
+    cost-field: timeoriginalestimate
+    supported-work-types:
+      - Bug
+      - Feature
+      - Refactoring
+      - Documentation
+    ticket-id-pattern: (TEST1-\d+)

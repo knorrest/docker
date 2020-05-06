@@ -1,0 +1,10 @@
+version: '2'
+services:
+  bitbucket:
+    image: 'atlassian/bitbucket-server:latest'
+    ports:
+      - 7990:7990
+      - 7999:7999
+    volumes:
+      - /Users/kalle/docker-volumes/bitbucket:/var/atlassian/application-data/bitbucket
+  

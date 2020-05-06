@@ -1,0 +1,13 @@
+version: '2'
+services:
+  bitbucket-5.13:
+    image: 'atlassian/bitbucket-server:5.13'
+    ports:
+      - 7990:7990
+      - 7999:7999
+    volumes:
+      - bitbucket-5.13:/var/atlassian/application-data/bitbucket
+
+volumes:
+  bitbucket-5.13:
+    external: true

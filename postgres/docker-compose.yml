@@ -1,0 +1,21 @@
+
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: gitaway
+    ports:
+      - 5432:5432
+    volumes:
+      #- '/Users/kalle/docker-volumes/postgres/conf.d:/etc/mysql/conf.d'
+      - '/Users/kalle/docker-volumes/postgres/data:/var/lib/postgresql/data'
+
+  adminer:
+    image: adminer
+    ports:
+      - 8081:8080

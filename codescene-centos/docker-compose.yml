@@ -1,0 +1,16 @@
+version: '2'
+services:
+  codescene-centos:
+    build: .
+    environment:
+      - CODESCENE_DB_PATH=/mnt/codescene/codescene
+      - CODESCENE_ANALYSIS_RESULTS_ROOT=/mnt/codescene/results
+    ports:
+      - '3005:3003'
+    volumes:
+      - '/Users/kalle/docker-volumes/codescene:/mnt/codescene'
+      - '/Users/kalle/github:/mnt/github'
+
+
+
+

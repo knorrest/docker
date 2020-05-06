@@ -1,0 +1,17 @@
+version: '3.2'
+services:
+  codescene-tomcat:
+    build: .
+    environment:
+      - CODESCENE_DB_PATH=/codescene/codescene
+      - CODESCENE_ANALYSIS_RESULTS_ROOT=/codescene/analysis
+      - CODESCENE_CLOSED_REPOSITORIES_ROOT=/codescene/repos
+    ports:
+      - '8888:8080'
+    volumes:
+      - '/Users/kalle/docker-volumes/codescene-tomcat:/codescene'
+      - '/Users/kalle/docker-volumes/ssh:/root/.ssh'
+
+
+
+

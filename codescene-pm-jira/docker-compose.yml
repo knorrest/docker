@@ -1,0 +1,30 @@
+version: '3.2'
+
+services:
+    reverseproxy:
+        image: reverseproxy
+        ports:
+            - 443:443
+        restart: always
+
+    codescene-pm-jira:
+        image: empear/codescene-pm-jira:latest
+        ports:
+          - '3004:3004'
+        environment:
+            - CODESCENE_JIRA_CONFIG=/codescene-pm-jira/codescene-pm-jira.yml
+            - CODESCENE_JIRA_DATABASE_PATH=/codescene-pm-jira/codescene-pm-jira
+        volumes:
+          - "/Users/kalle/docker-volumes/codescene-pm-jira:/codescene-pm-jira"
+          
+    codescene:
+        image: empear/ubuntu-onprem:latest
+        ports:
+          - '3003:3003'
+        environment:
+            - CODESCENE_DB_PATH=/codescene/codescene
+            - CODESCENE_ANALYSIS_RESULTS_ROOT=/codescene/analysis
+            - CODESCENE_CLOSED_REPOSITORIES_ROOT=/codescene/repos
+        volumes:
+          - '/Users/kalle/docker-volumes/codescene:/codescene'
+          - '/Users/kalle/docker-volumes/ssh:/root/.ssh'

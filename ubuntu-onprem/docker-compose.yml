@@ -1,0 +1,13 @@
+version: '2'
+services:
+  codescene:
+    image: empear/ubuntu-onprem:latest
+    ports:
+      - '4003:3003'
+    environment:
+      - CODESCENE_DB_PATH=/codescene/codescene
+      - CODESCENE_ANALYSIS_RESULTS_ROOT=/codescene/analysis
+      - CODESCENE_CLOSED_REPOSITORIES_ROOT=/codescene/repos
+    volumes:
+      - '/Users/kalle/docker-volumes/codescene-ubuntu/codescene:/codescene'
+      - '/Users/kalle/docker-volumes/ssh:/root/.ssh'

@@ -1,0 +1,6 @@
+version: '2'
+services:
+  ubuntu:
+    image: ubuntu:18.04
+    volumes:
+      - '/Users/kalle/github/empear-analytics/empear-enterprise:/empear-enterprise'

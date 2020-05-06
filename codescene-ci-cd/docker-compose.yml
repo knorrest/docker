@@ -1,0 +1,37 @@
+version: '2'
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce'
+    hostname: 'gitlab'
+    ports:
+      - '22:22'
+      - '80:80'
+      - '443:443'
+    volumes:
+      - '/Users/kalle/docker-volumes/codescene-ci-cd/gitlab/config:/etc/gitlab'
+      - '/Users/kalle/docker-volumes/codescene-ci-cd/gitlab/logs:/var/log/gitlab'
+      - '/Users/kalle/docker-volumes/codescene-ci-cd/gitlab/data:/var/opt/gitlab'
+      - '/Users/kalle/docker-volumes/codescene-ci-cd/codescene:/codescene'
+
+  gitlab-runner:
+    #image: 'gitlab/gitlab-runner'
+    build: 
+      context: .
+      dockerfile: gitlab-runner/Dockerfile
+    volumes:
+      - '/Users/kalle/docker-volumes/codescene-ci-cd/gitlab-runner/config:/etc/gitlab-runner'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+
+  codescene:
+    image: empear/ubuntu-onprem:latest
+    ports:
+      - '3005:3003'
+    environment:
+      - CODESCENE_DB_PATH=/codescene/codescene
+      - CODESCENE_ANALYSIS_RESULTS_ROOT=/codescene/analysis
+      - CODESCENE_CLOSED_REPOSITORIES_ROOT=/codescene/repos
+    volumes:
+      - '/Users/kalle/docker-volumes/codescene-ci-cd/codescene:/codescene'
+      - '/Users/kalle/docker-volumes/ssh:/root/.ssh'
+
+

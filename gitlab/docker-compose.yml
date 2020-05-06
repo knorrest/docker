@@ -1,0 +1,15 @@
+version: '2'
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce'
+    hostname: 'gitlab.example.com'
+    ports:
+      - '22:22'
+      - '8082:80'
+      - '443:443'
+    volumes:
+      - '/Users/kalle/gitlab/config:/etc/gitlab'
+      - '/Users/kalle/gitlab/logs:/var/log/gitlab'
+      - '/Users/kalle/gitlab/data:/var/opt/gitlab'
+      - '/Users/kalle/playground:/mnt/playground'
+

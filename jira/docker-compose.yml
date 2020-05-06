@@ -1,0 +1,20 @@
+version: '2'
+services:
+  jira:
+    image: 'atlassian/jira-software'
+    ports:
+      - '8080:8080'
+    volumes:
+      - '/Users/kalle/docker-volumes/jira:/var/atlassian/application-data/jira'
+   
+  reverseproxy:
+    image: nginx:latest
+    depends_on:
+      - jira   
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/error.log:/etc/nginx/error_log.log
