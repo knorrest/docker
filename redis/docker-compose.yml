@@ -7,4 +7,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - /Users/kalle/docker-volumes/redis/data:/data
+      - data:/data
+
+volumes:
+  data:
