@@ -1,10 +1,7 @@
-
-version: '3.1'
-
 services:
   db:
     build: .
-    command: --default-authentication-plugin=mysql_native_password
+    command: --mysql-native-password=ON
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: codescene
